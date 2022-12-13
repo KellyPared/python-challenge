@@ -41,14 +41,27 @@ def average_change(df):
     print(avg_change)
 
 
+def increase_decreases(df):
+    print(df['Profit/Losses'].max())
+
+
+
 def main():
     header()
     data = importing_csv()
     count = total_months(data)
     sum_p_l = profits_losses(data)
     average_change(data)
+    increase_decreases(data)
+   
 
 main()
+with open('Profit_Report.txt', 'w') as f:
+    f.write('\n')
+    f.main()
+    
+
+
 # Calculate the net amounth of Profits/Losses over the entire period
 
 # Calculate the changes in Profit/Losses over the entire period and average the changes.
