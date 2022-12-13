@@ -1,13 +1,11 @@
 '''Script for analyzing financial records'''
 
 
-import csv
+import pandas as pd
 
 def importing_csv():
-    with open('budget_data.csv', newline='') as csvfile:
-        financial_records = csv.reader(csvfile, delimiter=' ',quotechar='|')
-        for row in financial_records:
-            print('< '.join(row))
+    df = pd.read_csv(r'/Users/kellypared/Documents/GitHub/python-challenge/PyBank/Resources/budget_data.csv')
+    print(df)
 
 importing_csv()
 
