@@ -1,3 +1,6 @@
+'''Script for analyzing financial records'''
+
+
 import csv
 
 def importing_csv():
