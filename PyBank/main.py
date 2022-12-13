@@ -1,4 +1,12 @@
-'''This script analyzes financial records with the Profit/Losses.'''
+import csv
+
+def importing_csv():
+    with open('budget_data.csv', newline='') as csvfile:
+        financial_records = csv.reader(csvfile, delimiter=' ',quotechar='|')
+        for row in financial_records:
+            print('< '.join(row))
+
+importing_csv()
 
 def total_months():
     # Calculates the total number of months
