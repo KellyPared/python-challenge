@@ -3,6 +3,8 @@
 
 import pandas as pd
 
+path_write = ('PyPoll/Resources/Profit_Report.txt')
+
 def header():
     '''Gives the app a header.'''
     
@@ -14,7 +16,7 @@ def importing_csv():
     '''imports the csv using pandas saves as df'''
     
     df = pd.read_csv(r'/Users/kellypared/Documents/GitHub/python-challenge/PyBank/Resources/budget_data.csv')
-    print(df)
+    #print(df)
     return df
 
 
@@ -30,7 +32,7 @@ def profits_losses(df):
     '''Sums up the total amount of profits and losses'''
 
     sum_p_l = df['Profit/Losses'].sum()
-    print(f'Total: ${sum_p_l}')
+    print(f'Total: ${sum_p_l/86}')
     return sum_p_l
 
 
@@ -56,11 +58,13 @@ def main():
    
 
 main()
-with open('Profit_Report.txt', 'w') as f:
+with open(path_write, 'w') as f:
     f.write('\n')
-    f.main()
+
+  
+    
  # change   
- 
+
 
 
 # Calculate the net amounth of Profits/Losses over the entire period
