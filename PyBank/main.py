@@ -59,7 +59,8 @@ main()
 with open('Profit_Report.txt', 'w') as f:
     f.write('\n')
     f.main()
-    
+ # change   
+ 
 
 
 # Calculate the net amounth of Profits/Losses over the entire period
