@@ -37,32 +37,23 @@ def calc_changes(data,sum_p_l):
     '''Calculate the average change.'''
     profits = []
     losses = []
-    #highest_profit = 0
-    #lowest_profit = 0
 
     #get location of of the profit/losses items
     index_profit = data.columns.get_loc('Profit/Losses')
 
     #loop through the rows to find the values
-
     for row in range(0, len(data)):
         if data.iat[row, index_profit] < 0 :
             losses.append(data.iat[row, index_profit]) 
-    
         else:
             profits.append(data.iat[row, index_profit]) 
     change_pl = sum(profits)-sum(losses)
-    print(change_pl)
-    
-
-    
-
-    #print(f'Average Change: {avg_change}, data_loss')
-    
+    print(f'Average Change: ${change_pl}')
 
 
 def increase_decreases(data):
-    print((data.nlargest(1, 'Profit/Losses')))
+    largest= data.nlargest(1, 'Profit/Losses')
+    print(f'Greatest Increase in Profits:{largest}')
     
 
 
