@@ -1,6 +1,4 @@
-'''Script for analyzing financial records'''
-
-
+'''Script for analyzing financial records, used pandas and functions to practice.'''
 import pandas as pd
 
 path_write = ('PyPoll/Resources/Profit_Report.txt')
@@ -13,47 +11,68 @@ def header():
     
     
 def importing_csv():
-    '''imports the csv using pandas saves as df'''
+    '''imports the csv using pandas saves as data'''
     
-    df = pd.read_csv(r'/Users/kellypared/Documents/GitHub/python-challenge/PyBank/Resources/budget_data.csv')
-    #print(df)
-    return df
+    data = pd.read_csv(r'/Users/kellypared/Documents/GitHub/python-challenge/PyBank/Resources/budget_data.csv')
+    #print(data)
+    return data
 
 
-def total_months(df):
+def total_months(data):
     ''' Calculates the total number of months using pandas count'''
     
-    count_months = df['Date'].count()
+    count_months = data['Date'].count()
     print(f"Total Months: {count_months}")
     return count_months
     
 
-def profits_losses(df):
+def profits_losses(data):
     '''Sums up the total amount of profits and losses'''
 
-    sum_p_l = df['Profit/Losses'].sum()
-    print(f'Total: ${sum_p_l/86}')
+    sum_p_l = data['Profit/Losses'].sum()
     return sum_p_l
 
 
-def average_change(df):
+def calc_changes(data,sum_p_l):
     '''Calculate the average change.'''
+    profits = []
+    losses = []
+    #highest_profit = 0
+    #lowest_profit = 0
 
-    avg_change = df['Profit/Losses'].std()
-    print(avg_change)
+    #get location of of the profit/losses items
+    index_profit = data.columns.get_loc('Profit/Losses')
+
+    #loop through the rows to find the values
+
+    for row in range(0, len(data)):
+        if data.iat[row, index_profit] < 0 :
+            losses.append(data.iat[row, index_profit]) 
+    
+        else:
+            profits.append(data.iat[row, index_profit]) 
+    change_pl = sum(profits)-sum(losses)
+    print(change_pl)
+    
+
+    
+
+    #print(f'Average Change: {avg_change}, data_loss')
+    
 
 
-def increase_decreases(df):
-    print(df['Profit/Losses'].max())
-
+def increase_decreases(data):
+    print((data.nlargest(1, 'Profit/Losses')))
+    
 
 
 def main():
     header()
     data = importing_csv()
-    count = total_months(data)
+    print("\n")
+    total_months(data)
     sum_p_l = profits_losses(data)
-    average_change(data)
+    calc_changes(data, sum_p_l)
     increase_decreases(data)
    
 
