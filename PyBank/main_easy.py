@@ -34,11 +34,6 @@ month_high = (total_number_months[month_max_index+1])
 month_low = (total_number_months[month_min_index+1])
 
 
-
-
-
-
-
 print("------------------------")
 print("Financial Analysis\n")
 print("------------------------")
@@ -53,7 +48,6 @@ output_file = os.path.join("budget_data_easy.txt")
 
 #  Open the output file
 with open(completeName, "w") as datafile:
-            
 
     #datafile.writer = csv.writer(datafile)
     datafile.write("------------------------\n")
