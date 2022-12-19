@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as pd
 
 
-path_write = "PyPoll/Resources/Profit_Report.txt"
+path_write = "PyBank/Resources/Profit_Report.txt"
 
 
 def header():
@@ -84,5 +84,7 @@ def main():
 
 
 main()
+#completeName = os.path.join(save_path, name_of_file+".txt")         
+
 with open(path_write, "w") as f:
     f.write("\n")
