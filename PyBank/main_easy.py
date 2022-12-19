@@ -2,6 +2,9 @@ import os
 import csv
 
 PyBank_csv = os.path.join("PyBank/Resources/budget_data.csv")
+path_write = "PyBank/Resources/"
+completeName = os.path.join(path_write, "budget_data_easy.txt") 
+
 
 # Lists to store data
 total_number_months = []
@@ -46,10 +49,12 @@ print(f'Greatest Increase in Profits: {month_high} ${max_p}')
 print(f'Greatest Increase in Profits: {month_low} ${min_p}')
 
 # Set variable for output file
-output_file = os.path.join("budget_data_easy.csv")
+output_file = os.path.join("budget_data_easy.txt")
 
 #  Open the output file
-with open(output_file, "w") as datafile:
+with open(completeName, "w") as datafile:
+            
+
     #datafile.writer = csv.writer(datafile)
     datafile.write("------------------------\n")
     datafile.write("Financial Analysis\n")
