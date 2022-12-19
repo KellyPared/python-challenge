@@ -1,13 +1,15 @@
 """Script for analyzing financial records, used pandas and functions to practice."""
 import pandas as pd
+import numpy as pd
+
 
 path_write = "PyPoll/Resources/Profit_Report.txt"
 
 
 def header():
     """Gives the app a header."""
-
-    print("Financial Analysis")
+    print("------------------------")
+    print("Financial Analysis\n")
     print("------------------------")
 
 
@@ -15,7 +17,7 @@ def importing_csv():
     """imports the csv using pandas saves as data"""
 
     data = pd.read_csv(
-        r"/Users/kellypared/Documents/GitHub/python-challenge/PyBank/Resources/budget_data.csv"
+        r"PyBank/Resources/budget_data.csv"
     )
     # print(data)
     return data
@@ -40,33 +42,45 @@ def calc_changes(data, sum_p_l):
     """Calculate the average change."""
     profits = []
     losses = []
+    #total_changes = 0
 
-    # get location of of the profit/losses items
-    index_profit = data.columns.get_loc("Profit/Losses")
+    data['changes'] = data['Profit/Losses'].diff()
+    total_changes = data['changes'].sum
+    print(total_changes)
 
     # loop through the rows to find the values
-    for row in range(0, len(data)):
-        if data.iat[row, index_profit] < 0:
-            losses.append(data.iat[row, index_profit])
-        else:
-            profits.append(data.iat[row, index_profit])
-    change_pl = sum(profits) - sum(losses)
-    print(f"Average Change: ${change_pl}")
+    #for row in range(1, len(data)):
+        #total_changes += 
+   
+
 
 
 def increase_decreases(data):
-    largest = data.nlargest(1, "Profit/Losses")
+    # Using DataFrame.query() method extract column values.
+    #df2=df.query('Fee == 25000')['Courses']
+    #print(df2)
+    for row in range(0, len(data)):
+        largest = data.nlargest(1, "Profit/Losses")
     print(f"Greatest Increase in Profits:{largest}")
 
 
 def main():
     header()
+
     data = importing_csv()
-    print("\n")
+    #print(data.info())
+
     total_months(data)
+
     sum_p_l = profits_losses(data)
+    print(f'Total: ${sum_p_l}')
+
     calc_changes(data, sum_p_l)
-    increase_decreases(data)
+    sums = data.select_dtypes(pd.np.number).sum().rename('total')
+    data.loc['total'] = data.select_dtypes(pd.np.number).sum()
+    print("\n")
+    #increase_decreases(data)
+    
 
 
 main()
