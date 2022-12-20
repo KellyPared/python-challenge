@@ -1,98 +1,63 @@
-"""Script for analyzing financial records, used pandas and functions to practice."""
-import pandas as pd
-#import numpy as pd
 import os
+import csv
 
-
+PyBank_csv = os.path.join("PyBank/Resources/budget_data.csv")
 path_write = "PyBank/Resources/"
-#completeName = os.path.join(path_write, "budget_data_pandas.txt") 
+completeName = os.path.join(path_write, "budget_data_easy.txt") 
 
 
-def header():
-    """Gives the app a header."""
-    print("------------------------")
-    print("Financial Analysis\n")
-    print("------------------------")
+# Lists to store data
+total_number_months = []
+total_profit = []
 
-
-def importing_csv():
-    """imports the csv using pandas saves as data"""
-
-    data = pd.read_csv(
-        r"PyBank/Resources/budget_data.csv"
-    )
-    # print(data)
-    return data
-
-
-def total_months(data):
-    """ Calculates the total number of months using pandas count"""
-
-    count_months = data["Date"].count()
-    print(f"Total Months: {count_months}")
-    return count_months
-
-
-def profits_losses(data):
-    """Sums up the total amount of profits and losses"""
-
-    sum_p_l = data["Profit/Losses"].sum()
-    return sum_p_l
-
-
-def calc_changes(data, sum_p_l):
-    """Calculate the average change."""
-    profits = []
-    losses = []
-    #total_changes = 0
-
-    data['changes'] = data['Profit/Losses'].diff()
-    total_changes = data['changes'].sum
-    print(total_changes)
-
-    # loop through the rows to find the values
-    #for row in range(1, len(data)):
-        #total_changes += 
-   
-
-def increase_decreases(data):
-    # Using DataFrame.query() method extract column values.
-    #df2=df.query('Fee == 25000')['Courses']
-    #print(df2)
-    for row in range(0, len(data)):
-        largest = data.nlargest(1, "Profit/Losses")
-    print(f"Greatest Increase in Profits:{largest}")
-
-
-def main():
-    header()
-
-    data = importing_csv()
-    #print(data.info())
-
-    total_months(data)
-
-    sum_p_l = profits_losses(data)
-    print(f'Total: ${sum_p_l}')
-
-    calc_changes(data, sum_p_l)
-    sums = data.select_dtypes(pd.np.number).sum().rename('total')
-    data.loc['total'] = data.select_dtypes(pd.np.number).sum()
-    print("\n")
-    #increase_decreases(data)
+# with open(udemy_csv, encoding='utf-8') as csvfile:
+with open(PyBank_csv) as data:
+    data = csv.reader(data, delimiter=",")
+    next(data)
     
+    for row in data:
+        # add all months to list
+        total_number_months.append(row[0])
+        #print(total_number_months)
+
+        # Add all p/l to list
+        total_profit.append(int(row[1]))
+
+changes = ([t-s for s, t in zip(total_profit, total_profit[1:])])
+average_change = sum(changes)/(len(total_number_months)-1)
+max_p = max(changes)
+min_p = min(changes)
+month_max_index = changes.index(max_p)
+month_min_index = changes.index(min_p)
+
+month_high = (total_number_months[month_max_index+1])
+month_low = (total_number_months[month_min_index+1])
 
 
-main()
+print("------------------------")
+print("Financial Analysis\n")
+print("------------------------")
+print(f'Total Months:  {len(total_number_months)}')
+print(f'Total:  ${sum(total_profit)}')
+print(f'Average Change: ${round(average_change, 2)}')
+print(f'Greatest Increase in Profits: {month_high} ${max_p}')
+print(f'Greatest Increase in Profits: {month_low} ${min_p}')
 
-#with open(completeName, "w") as datafile:
+# Set variable for output file
+output_file = os.path.join("budget_data_easy.txt")
+
+#  Open the output file
+with open(completeName, "w") as datafile:
 
     #datafile.writer = csv.writer(datafile)
-    #datafile.write("------------------------\n")
-    #datafile.write("Financial Analysis\n")
-    #datafile. write("------------------------\n")
-    #datafile. write(f'Total Months:  {count_months)}\n')
-    #datafile.write(f'Total:  ${sum(total_profit)}\n')
-    #datafile.write(f'Average Change: ${round(average_change, 2)}\n')
-   # datafile.write(f'Greatest Increase in Profits: {month_high} ${max_p}\n')
-    ##datafile.write(f'Greatest Increase in Profits: {month_low} ${min_p}\n')
+    datafile.write("------------------------\n")
+    datafile.write("Financial Analysis\n")
+    datafile. write("------------------------\n")
+    datafile. write(f'Total Months:  {len(total_number_months)}\n')
+    datafile.write(f'Total:  ${sum(total_profit)}\n')
+    datafile.write(f'Average Change: ${round(average_change, 2)}\n')
+    datafile.write(f'Greatest Increase in Profits: {month_high} ${max_p}\n')
+    datafile.write(f'Greatest Increase in Profits: {month_low} ${min_p}\n')
+
+    
+
