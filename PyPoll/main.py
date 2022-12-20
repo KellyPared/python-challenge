@@ -1,21 +1,27 @@
-"""Script for analyzing financial records, used pandas and functions to practice."""
-import pandas as pd
+import os
+import csv
 
-path_write = "PyPoll/Resources/Profit_Report.txt"
-
-
-def header():
-    """Gives the app a header."""
-    print("------------------------")
-    print("Election Results \n")
-    print("------------------------")
+PyBank_csv = os.path.join("PyPoll/Resources/election_data.csv")
+path_write = "PyPoll/Resources/"
+completeName = os.path.join(path_write, "election_data.txt") 
 
 
-def importing_csv():
-    """imports the csv using pandas saves as data"""
+# Lists to store data
+total_number_votes = []
+list_candidates = []
 
-    data = pd.read_csv(
-        r"/...PyPoll/Resources/election_data.csv"
-    )
-    print(data)
-    return data
+# with open(udemy_csv, encoding='utf-8') as csvfile:
+with open(PyBank_csv) as data:
+    data = csv.reader(data, delimiter=",")
+    next(data)
+    
+    for row in data:
+        # add all months to list
+        total_number_votes.append(row[0])
+        if row[1] in list_candidates:
+            continue
+        else:
+            list_candidates.append(row[1])
+
+print(len(total_number_votes))
+print(list_candidates)
