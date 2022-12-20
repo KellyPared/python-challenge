@@ -55,7 +55,7 @@ print('-'*25)
 output_file = os.path.join("election_data_easy.txt")
 
 #  Open the output file
-with open(output_file, "w") as datafile:
+with open(completeName, "w") as datafile:
 
     datafile.write('Election Results\n')
     datafile.write('-'*25)
