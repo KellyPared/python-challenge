@@ -1,9 +1,11 @@
 """Script for analyzing financial records, used pandas and functions to practice."""
 import pandas as pd
-import numpy as pd
+#import numpy as pd
+import os
 
 
-path_write = "PyBank/Resources/Profit_Report.txt"
+path_write = "PyBank/Resources/"
+#completeName = os.path.join(path_write, "budget_data_pandas.txt") 
 
 
 def header():
@@ -53,8 +55,6 @@ def calc_changes(data, sum_p_l):
         #total_changes += 
    
 
-
-
 def increase_decreases(data):
     # Using DataFrame.query() method extract column values.
     #df2=df.query('Fee == 25000')['Courses']
@@ -84,7 +84,15 @@ def main():
 
 
 main()
-#completeName = os.path.join(save_path, name_of_file+".txt")         
 
-with open(path_write, "w") as f:
-    f.write("\n")
+#with open(completeName, "w") as datafile:
+
+    #datafile.writer = csv.writer(datafile)
+    #datafile.write("------------------------\n")
+    #datafile.write("Financial Analysis\n")
+    #datafile. write("------------------------\n")
+    #datafile. write(f'Total Months:  {count_months)}\n')
+    #datafile.write(f'Total:  ${sum(total_profit)}\n')
+    #datafile.write(f'Average Change: ${round(average_change, 2)}\n')
+   # datafile.write(f'Greatest Increase in Profits: {month_high} ${max_p}\n')
+    ##datafile.write(f'Greatest Increase in Profits: {month_low} ${min_p}\n')
