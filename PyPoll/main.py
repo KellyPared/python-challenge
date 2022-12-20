@@ -6,8 +6,8 @@ path_write = "PyPoll/Resources/Profit_Report.txt"
 
 def header():
     """Gives the app a header."""
-
-    print("Financial Analysis\n")
+    print("------------------------")
+    print("Election Results \n")
     print("------------------------")
 
 
