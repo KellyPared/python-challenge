@@ -1,9 +1,8 @@
 import os
 import csv
 
-PyBank_csv = os.path.join("PyBank/Resources/budget_data.csv")
-path_write = "PyBank/Resources/"
-completeName = os.path.join(path_write, "budget_data_easy.txt") 
+PyBank_csv = os.path.join("PyBank", "Resources", "budget_data.csv")
+completeName = os.path.join("PyBank", "Resources", "budget_data_easy.txt") 
 
 
 # Lists to store data
