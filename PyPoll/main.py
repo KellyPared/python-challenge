@@ -1,9 +1,9 @@
 import os
 import csv
 
-PyBank_csv = os.path.join("PyPoll/Resources/election_data.csv")
-path_write = "PyPoll/Resources/"
-completeName = os.path.join(path_write, "election_data.txt") 
+PyBank_csv = os.path.join("PyPoll", "Resources", "election_data.csv")
+
+completeName = os.path.join("PyPoll", "Resources", "election_data.txt") 
 
 
 # Lists to store data
