@@ -27,7 +27,7 @@ with open(PyBank_csv) as data:
             total_votes_stockham += 1
         elif row[2] =='Diana DeGette':
             total_votes_degette += 1
-        else:
+        elif row[2] == 'Raymon Anthony Doane':
             total_votes_doane += 1
         #if row[2] in list_candidates:
         #list_candidates.append(row[2])
@@ -40,7 +40,7 @@ print(f'Total Votes: {len(total_number_votes)}')
 print('-'*25)
 print(f'Charles Casper Stockham: {round((total_votes_stockham/len(total_number_votes))*100,3)}% ({total_votes_stockham})')
 print(f'Diana DeGette {round((total_votes_degette/len(total_number_votes))*100,3)}% ({total_votes_degette})')
-print(f'Raymon Anthony Doane {round((total_votes_doane/len(total_number_votes))*100,3)}% ({total_votes_stockham})')
+print(f'Raymon Anthony Doane {round((total_votes_doane/len(total_number_votes))*100,3)}% ({total_votes_doane})')
 print('-'*25)
 
 if max(total) == total_votes_stockham:
