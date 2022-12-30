@@ -1,8 +1,11 @@
 import os
 import csv
 
-PyBank_csv = os.path.join("PyBank", "Resources", "budget_data.csv")
-completeName = os.path.join("PyBank", "Resources", "budget_data_easy.txt") 
+
+ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '..'))
+PyBank_csv = os.path.join(ROOT_DIR, "PyBank", "Resources", "budget_data.csv")
+completeName = os.path.join(ROOT_DIR, "PyBank", "Resources", "budget_data_easy.txt") 
+#PyBank_csv = os.path.join(ROOT_DIR,"PyPoll", "Resources", "election_data.csv")
 
 
 # Lists to store data

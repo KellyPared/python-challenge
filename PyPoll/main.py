@@ -1,9 +1,17 @@
 import os
 import csv
 
-PyBank_csv = os.path.join("PyPoll", "Resources", "election_data.csv")
+#/python-challenge/PyPoll/Resources/election_data.csv
+ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '..'))
+PyBank_csv = os.path.join(ROOT_DIR, "PyPoll", "Resources", "election_data.csv")
 
-completeName = os.path.join("PyPoll", "Resources", "election_data.txt") 
+
+#absolute_path = os.path.dirname("election_data.csv")
+#relative_path = "PyPoll/Resources/election_data.csv"
+
+completeName = os.path.join(ROOT_DIR, "PyPoll", "Resources", "election_data.txt") 
+# Set variable for output file
+#output_file = os.path.join("election_data_easy.txt")
 
 
 # Lists to store data
@@ -51,8 +59,7 @@ else:
     print('Winner: Raymon Anthony Doane')
 print('-'*25)
 
-# Set variable for output file
-output_file = os.path.join("election_data_easy.txt")
+
 
 #  Open the output file
 with open(completeName, "w") as datafile:
