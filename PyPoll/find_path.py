@@ -1,6 +1,6 @@
 import os
 import pathlib
-from config.definitions import ROOT_DIR
+#from config.definitions import ROOT_DIR
 print(os.path.join(ROOT_DIR, 'data', 'mydata.json'))
 
 path_file = pathlib.Path("election_data.csv")
