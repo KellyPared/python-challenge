@@ -4,10 +4,8 @@ import csv
 
 ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '..'))
 PyBank_csv = os.path.join(ROOT_DIR, "PyBank", "Resources", "budget_data.csv")
-completeName = os.path.join(ROOT_DIR, "PyBank", "Resources", "budget_data_easy.txt") 
-#PyBank_csv = os.path.join(ROOT_DIR,"PyPoll", "Resources", "election_data.csv")
-
-
+#PyBank_csv = os.path.join("..", "Resources", "budget_data.csv")
+#PyBank/Resources/budget_data.csv
 # Lists to store data
 total_number_months = []
 total_profit = []
@@ -37,7 +35,7 @@ month_low = (total_number_months[month_min_index+1])
 
 
 print("------------------------")
-print("Financial Analysis\n")
+print("Fina#ncial Analysis\n")
 print("------------------------")
 print(f'Total Months:  {len(total_number_months)}')
 print(f'Total:  ${sum(total_profit)}')
@@ -46,7 +44,10 @@ print(f'Greatest Increase in Profits: {month_high} ${max_p}')
 print(f'Greatest Increase in Profits: {month_low} ${min_p}')
 
 # Set variable for output file
-output_file = os.path.join("budget_data_easy.txt")
+#output_file = os.path.join("budget_data_easy.txt")
+#relative path = PyBank/Resources/budget_data_easy.txt
+#completeName = os.path.join("..", "Resources", "budget_data_easy.txt")
+completeName = os.path.join(ROOT_DIR, "PyBank", "Resources", "budget_data_easy.txt") 
 
 #  Open the output file
 with open(completeName, "w") as datafile:
