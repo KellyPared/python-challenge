@@ -7,12 +7,10 @@ PyBank_csv = os.path.join(ROOT_DIR, "PyPoll", "Resources", "election_data.csv")
 
 
 #absolute_path = os.path.dirname("election_data.csv")
-#relative_path = "PyPoll/Resources/election_data.csv"
+#relative_path = "PyPoll/Resources/"
 
 completeName = os.path.join(ROOT_DIR, "PyPoll", "Resources", "election_data.txt") 
-# Set variable for output file
-#output_file = os.path.join("election_data_easy.txt")
-
+#full_path = os.path.join(absolute_path, relative_path)
 
 # Lists to store data
 total_number_votes = []
