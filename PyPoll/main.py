@@ -2,14 +2,14 @@ import os
 import csv
 
 #/python-challenge/PyPoll/Resources/election_data.csv
-ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '..'))
-PyBank_csv = os.path.join(ROOT_DIR, "PyPoll", "Resources", "election_data.csv")
+#ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '..'))
+PyBank_csv = os.path.join("Resources", "election_data.csv")
 
 
 #absolute_path = os.path.dirname("election_data.csv")
 #relative_path = "PyPoll/Resources/"
 
-completeName = os.path.join(ROOT_DIR, "PyPoll", "Resources", "election_data.txt") 
+completeName = os.path.join("analysis", "election_data.txt") 
 #full_path = os.path.join(absolute_path, relative_path)
 
 # Lists to store data
