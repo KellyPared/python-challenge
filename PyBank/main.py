@@ -3,8 +3,6 @@ import os
 import csv
 
 
-#ROOT_DIR = os.path.realpath(os.path.join(os.path.dirname(__file__), '..'))
-#PyBank_csv = os.path.join(ROOT_DIR, "PyBank", "Resources", "budget_data.csv")
 PyBank_csv = os.path.join("Resources", "budget_data.csv")
 #PyBank/Resources/budget_data.csv
 # Lists to store data
